@@ -1,3 +1,4 @@
+import { describe, expect, it, jest } from "@jest/globals";
 import { Sequelize } from "sequelize-typescript";
 import Customer from "../../../domain/customer/entity/customer";
 import Address from "../../../domain/customer/value-object/address";
@@ -11,10 +12,10 @@ customer.changeAddress(address);
 
 const MockRepository = () => {
   return {
-    find: jest.fn().mockReturnValue(Promise.resolve(customer)),
-    findAll: jest.fn(),
-    create: jest.fn(),
-    update: jest.fn(),
+    find: jest.fn<Promise<Customer>, [string]>().mockResolvedValue(customer),
+    findAll: jest.fn<Promise<Customer[]>, []>().mockResolvedValue([]),
+    create: jest.fn<Promise<void>, [Customer]>().mockResolvedValue(undefined),
+    update: jest.fn<Promise<void>, [Customer]>().mockResolvedValue(undefined),
   };
 };
 
