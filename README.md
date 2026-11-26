@@ -25,10 +25,10 @@ npm.cmd test
 No Prompt de Comando do Windows ou em um terminal macOS/Linux, use `npm test`.
 O comando executa `tsc --noEmit` e, em seguida, todos os testes Jest.
 
-Para executar somente os testes de Product:
+Para executar somente os testes unitários do domínio Product:
 
 ```powershell
-npx jest src/usecase/product
+node node_modules/jest/bin/jest.js src/domain/product
 ```
 
 Os testes de integração usam SQLite em memória e não precisam de um banco externo.

@@ -25,6 +25,13 @@ describe("Product unit tests", () => {
     ]);
   });
 
+  it("should allow a price of zero", () => {
+    const product = new Product("123", "Name", 0);
+
+    expect(product.notification.hasErrors()).toBe(false);
+    expect(product.validate()).toBe(true);
+  });
+
   it("should collect errors for multiple invalid properties", () => {
     const product = new Product("123", "", -1);
 
